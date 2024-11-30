@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health and Fitness Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="bg-dark text-white sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="./images/logo.jpeg" alt="Logo" class="logo profile rounded" height="50px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button"
+                                data-bs-toggle="dropdown">Category</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#calculatorModal" data-calculator="scientific">Scientific
+                                        Calculator</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#calculatorModal" data-calculator="finance">Financial
+                                        Calculators</a></li>
+                                <li><a class="dropdown-item" href="./health-fitness-calculators">Health and Fitness
+                                        Calculators</a></li>
+                                <li><a class="dropdown-item" href="./conversion-calculators">Conversion Calculators</a>
+                                </li>
+                                <li><a class="dropdown-item" href="./math-algebra-calculators">Math and Algebra
+                                        Calculators</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#calculatorModal" data-calculator="geometry">Geometry
+                                        Calculators</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+                                data-bs-target="#contactModal">Contact</a></li>
+                    </ul>
+                    <form class=" me-3">
+                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                    </form>
+                    <div class="flex-shrink-0 dropdown">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="./images/user.png" alt="mdo" width="32" height="32" class="rounded-circle border">
+                        </a>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                            <li class="dropdown-item" id="login-buttons"><a class="nav-link" href="#"
+                                    data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                            <li class="dropdown-item" id="signup-buttons"><a class="nav-link" href="#"
+                                    data-bs-toggle="modal" data-bs-target="#signupModal">Signup</a></li>
+
+
+                            <li class="dropdown-item d-none" id="username"></li>
+                            <li class="dropdown-item d-none" id="logout-button"><a class="nav-link text-danger"
+                                    href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="container my-5 mt-2">
+        <!-- BMI Calculator -->
+        <section class="mb-5">
+            <h2 class="mb-3">BMI Calculator</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="bmi-height" class="form-label">Height (cm):</label>
+                    <input type="number" id="bmi-height" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="bmi-weight" class="form-label">Weight (kg):</label>
+                    <input type="number" id="bmi-weight" class="form-control">
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3" onclick="calculateBMI()">Calculate BMI</button>
+            <p id="bmi-result" class="mt-2"></p>
+        </section>
+
+        <!-- BMR Calculator -->
+        <section class="mb-5">
+            <h2 class="mb-3">BMR Calculator</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="bmr-gender" class="form-label">Gender:</label>
+                    <select id="bmr-gender" class="form-select">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="bmr-age" class="form-label">Age (years):</label>
+                    <input type="number" id="bmr-age" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="bmr-weight" class="form-label">Weight (kg):</label>
+                    <input type="number" id="bmr-weight" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="bmr-height" class="form-label">Height (cm):</label>
+                    <input type="number" id="bmr-height" class="form-control">
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3" onclick="calculateBMR()">Calculate BMR</button>
+            <p id="bmr-result" class="mt-2"></p>
+        </section>
+
+        <!-- Calorie Calculator -->
+        <section class="mb-5">
+            <h2 class="mb-3">Calorie Calculator</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="calorie-activity" class="form-label">Activity Level:</label>
+                    <select id="calorie-activity" class="form-select">
+                        <option value="1.2">Sedentary</option>
+                        <option value="1.375">Light Activity</option>
+                        <option value="1.55">Moderate Activity</option>
+                        <option value="1.725">Very Active</option>
+                        <option value="1.9">Extra Active</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="calorie-age" class="form-label">Age (years):</label>
+                    <input type="number" id="calorie-age" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="calorie-weight" class="form-label">Weight (kg):</label>
+                    <input type="number" id="calorie-weight" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="calorie-height" class="form-label">Height (cm):</label>
+                    <input type="number" id="calorie-height" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="calorie-gender" class="form-label">Gender:</label>
+                    <select id="calorie-gender" class="form-select">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3" onclick="calculateCalories()">Calculate Calories</button>
+            <p id="calorie-result" class="mt-2"></p>
+        </section>
+
+        <!-- Body Fat Calculator -->
+        <section class="mb-5">
+            <h2 class="mb-3">Body Fat Calculator</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="bodyfat-gender" class="form-label">Gender:</label>
+                    <select id="bodyfat-gender" class="form-select">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="bodyfat-age" class="form-label">Age:</label>
+                    <input type="number" id="bodyfat-age" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="bodyfat-waist" class="form-label">Waist (cm):</label>
+                    <input type="number" id="bodyfat-waist" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="bodyfat-neck" class="form-label">Neck (cm):</label>
+                    <input type="number" id="bodyfat-neck" class="form-control">
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3" onclick="calculateBodyFat()">Calculate Body Fat</button>
+            <p id="bodyfat-result" class="mt-2"></p>
+        </section>
+
+        <!-- Ideal Weight Calculator -->
+        <section class="mb-5">
+            <h2 class="mb-3">Ideal Weight Calculator</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="ideal-gender" class="form-label">Gender:</label>
+                    <select id="ideal-gender" class="form-select">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="ideal-height" class="form-label">Height (cm):</label>
+                    <input type="number" id="ideal-height" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="ideal-age" class="form-label">Age (years):</label>
+                    <input type="number" id="ideal-age" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="ideal-frame" class="form-label">Frame Size:</label>
+                    <select id="ideal-frame" class="form-select">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3" onclick="calculateIdealWeight()">Calculate Ideal Weight</button>
+            <p id="ideal-result" class="mt-2"></p>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Login</h5>
+                </div>
+                <form action="/login" method="POST">
+                    <div class="modal-body">
+                        <input type="text" id="loginUsername" placeholder="Username" name="username"
+                            class="form-control mb-3">
+                        <input type="password" id="loginPassword" placeholder="Password" name="password"
+                            class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signupModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Signup</h5>
+                </div>
+                <form action="/register" method="POST">
+                    <div class="modal-body">
+                        <input type="text" name="username" id="signupUsername" placeholder="Username"
+                            class="form-control mb-3">
+                        <input type="email" name="email" id="signupEmail" placeholder="Email" class="form-control mb-3">
+                        <input type="number" name="mobile" id="signupmob" placeholder="Mobile"
+                            class="form-control mb-3">
+                        <input type="password" name="password" id="signupPassword" placeholder="Password"
+                            class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">Signup</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="contactModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Contact Us</h5>
+                </div>
+                <form action="/contact" method="POST">
+                    <div class="modal-body">
+                        <input type="text" id="contactName" placeholder="Name" class="form-control mb-3" name="name"
+                            required>
+                        <input type="email" id="contactEmail" placeholder="Email" class="form-control mb-3" name="email"
+                            required>
+                        <textarea id="contactMessage" placeholder="Message" class="form-control"
+                            name="message"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="calculatorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Calculator</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="calculatorContent">
+                        <!-- Calculator content dynamically loaded via JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

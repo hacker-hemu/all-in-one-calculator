@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Conversion Calculator</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            /* padding-top: 20px; */
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            margin-top: 10px;
+        }
+
+        .output {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="bg-dark text-white sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="./images/logo.jpeg" alt="Logo" class="logo profile rounded" height="50px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button"
+                                data-bs-toggle="dropdown">Category</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#calculatorModal" data-calculator="scientific">Scientific
+                                        Calculator</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#calculatorModal" data-calculator="finance">Financial
+                                        Calculators</a></li>
+                                <li><a class="dropdown-item" href="./health-fitness-calculators">Health and Fitness
+                                        Calculators</a></li>
+                                <li><a class="dropdown-item" href="./conversion-calculators">Conversion Calculators</a>
+                                </li>
+                                <li><a class="dropdown-item" href="./math-algebra-calculators">Math and Algebra
+                                        Calculators</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#calculatorModal" data-calculator="geometry">Geometry
+                                        Calculators</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+                                data-bs-target="#contactModal">Contact</a></li>
+                    </ul>
+                    <form class=" me-3">
+                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                    </form>
+                    <div class="flex-shrink-0 dropdown">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="./images/user.png" alt="mdo" width="32" height="32" class="rounded-circle border">
+                        </a>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                            <li class="dropdown-item" id="login-buttons"><a class="nav-link" href="#"
+                                    data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                            <li class="dropdown-item" id="signup-buttons"><a class="nav-link" href="#"
+                                    data-bs-toggle="modal" data-bs-target="#signupModal">Signup</a></li>
+
+
+                            <li class="dropdown-item d-none" id="username"></li>
+                            <li class="dropdown-item d-none" id="logout-button"><a class="nav-link text-danger"
+                                    href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mt-2">
+        <h1 class="text-center">Conversion Calculator</h1>
+        <div class="row">
+            <!-- Length Calculator -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Length Calculator</h5>
+                        <input type="number" class="form-control mb-2" id="lengthInput" placeholder="Length">
+                        <div class="row mb-2">
+                            <div class="col">
+                                <select class="form-select" id="lengthUnit">
+                                    <option value="meters">Meters</option>
+                                    <option value="feet">Feet</option>
+                                    <option value="inches">Inches</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select class="form-select" id="lengthTargetUnit">
+                                    <option value="meters">Meters</option>
+                                    <option value="feet">Feet</option>
+                                    <option value="inches">Inches</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="calculateLength()">Convert</button>
+                        <p id="lengthOutput" class="output"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Age Calculator -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Age Calculator</h5>
+                        <input type="date" class="form-control mb-2" id="birthdate">
+                        <input type="date" class="form-control mb-2" id="currentDate">
+                        <button class="btn btn-primary w-100" onclick="calculateAge()">Calculate Age</button>
+                        <p id="ageOutput" class="output"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hour to Minute & Seconds Calculator -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Hour to Minute & Seconds Calculator</h5>
+                        <input type="number" class="form-control mb-2" id="hoursInput" placeholder="Hours">
+                        <button class="btn btn-primary w-100" onclick="calculateHours()">Convert</button>
+                        <p id="hoursOutput" class="output"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date Calculator -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Date Calculator</h5>
+                        <input type="date" class="form-control mb-2" id="startDate">
+                        <input type="date" class="form-control mb-2" id="endDate">
+                        <button class="btn btn-primary w-100" onclick="calculateDate()">Calculate Duration</button>
+                        <p id="dateOutput" class="output"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GPA Calculator -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">GPA Calculator</h5>
+                        <textarea class="form-control mb-2" id="gpaInput"
+                            placeholder="Course, Credits, Grade (comma separated)"></textarea>
+                        <button class="btn btn-primary w-100" onclick="calculateGPA()">Calculate GPA</button>
+                        <p id="gpaOutput" class="output"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Height Calculator -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Height Calculator</h5>
+                        <input type="number" class="form-control mb-2" id="heightInput" placeholder="Height">
+                        <div class="row mb-2">
+                            <div class="col">
+                                <select class="form-select" id="heightUnit">
+                                    <option value="cm">Centimeters</option>
+                                    <option value="inches">Inches</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select class="form-select" id="heightTargetUnit">
+                                    <option value="cm">Centimeters</option>
+                                    <option value="inches">Inches</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="calculateHeight()">Convert</button>
+                        <p id="heightOutput" class="output"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password Generator -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Password Generator</h5>
+                        <input type="number" class="form-control mb-2" id="passwordLength" placeholder="Length">
+                        <button class="btn btn-primary w-100" onclick="generatePassword()">Generate Password</button>
+                        <p id="passwordOutput" class="output"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bill Calculator -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bill and Tip Calculator</h5>
+                        <input type="number" class="form-control mb-2" id="billAmount" placeholder="Bill Amount">
+                        <input type="number" class="form-control mb-2" id="tipPercentage" placeholder="Tip Percentage">
+                        <button class="btn btn-primary w-100" onclick="calculateBill()">Calculate Total</button>
+                        <p id="billOutput" class="output"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-success mt-3" onclick="goToNextPage()">Go to Next Page</button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Login</h5>
+                </div>
+                <form action="/login" method="POST">
+                    <div class="modal-body">
+                        <input type="text" id="loginUsername" placeholder="Username" name="username"
+                            class="form-control mb-3">
+                        <input type="password" id="loginPassword" placeholder="Password" name="password"
+                            class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signupModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Signup</h5>
+                </div>
+                <form action="/register" method="POST">
+                    <div class="modal-body">
+                        <input type="text" name="username" id="signupUsername" placeholder="Username"
+                            class="form-control mb-3">
+                        <input type="email" name="email" id="signupEmail" placeholder="Email" class="form-control mb-3">
+                        <input type="number" name="mobile" id="signupmob" placeholder="Mobile"
+                            class="form-control mb-3">
+                        <input type="password" name="password" id="signupPassword" placeholder="Password"
+                            class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">Signup</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="contactModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Contact Us</h5>
+                </div>
+                <form action="/contact" method="POST">
+                    <div class="modal-body">
+                        <input type="text" id="contactName" placeholder="Name" class="form-control mb-3" name="name"
+                            required>
+                        <input type="email" id="contactEmail" placeholder="Email" class="form-control mb-3" name="email"
+                            required>
+                        <textarea id="contactMessage" placeholder="Message" class="form-control"
+                            name="message"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="calculatorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Calculator</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="calculatorContent">
+                        <!-- Calculator content dynamically loaded via JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

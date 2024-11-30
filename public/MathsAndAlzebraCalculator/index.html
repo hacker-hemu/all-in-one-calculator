@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics and Algebra Calculators</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="bg-dark text-white sticky-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">
+          <img src="./images/logo.jpeg" alt="Logo" class="logo profile rounded" height="50px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button"
+                data-bs-toggle="dropdown">Category</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#calculatorModal"
+                    data-calculator="scientific">Scientific Calculator</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#calculatorModal"
+                    data-calculator="finance">Financial Calculators</a></li>
+                <li><a class="dropdown-item" href="./health-fitness-calculators">Health and Fitness Calculators</a></li>
+                <li><a class="dropdown-item" href="./conversion-calculators">Conversion Calculators</a></li>
+                <li><a class="dropdown-item" href="./math-algebra-calculators">Math and Algebra Calculators</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#calculatorModal"
+                    data-calculator="geometry">Geometry Calculators</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+
+            <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+                data-bs-target="#contactModal">Contact</a></li>
+          </ul>
+          <form class=" me-3">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
+          <div class="flex-shrink-0 dropdown">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="./images/user.png" alt="mdo" width="32" height="32" class="rounded-circle border">
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+              <li class="dropdown-item" id="login-buttons"><a class="nav-link" href="#" data-bs-toggle="modal"
+                  data-bs-target="#loginModal">Login</a></li>
+              <li class="dropdown-item" id="signup-buttons"><a class="nav-link" href="#" data-bs-toggle="modal"
+                  data-bs-target="#signupModal">Signup</a></li>
+
+
+              <li class="dropdown-item d-none" id="username"></li>
+              <li class="dropdown-item d-none" id="logout-button"><a class="nav-link text-danger"
+                  href="/logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="container my-4 ">
+    <div class="row g-4 mt-2">
+      <!-- Complex Number Calculator -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Complex Number Calculator</h2>
+            <input id="real1" class="form-control mb-2" type="number" placeholder="Real part 1">
+            <input id="imag1" class="form-control mb-2" type="number" placeholder="Imaginary part 1">
+            <input id="real2" class="form-control mb-2" type="number" placeholder="Real part 2">
+            <input id="imag2" class="form-control mb-2" type="number" placeholder="Imaginary part 2">
+            <button class="btn btn-primary w-100" onclick="calculateComplex()">Calculate</button>
+            <p id="complex-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Boolean Algebra Simplifier -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Boolean Algebra Simplifier</h2>
+            <input id="boolean-input" class="form-control mb-2" type="text" placeholder="Enter Boolean Expression">
+            <button class="btn btn-primary w-100" onclick="simplifyBoolean()">Simplify</button>
+            <p id="boolean-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partial Fraction Decomposer -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Partial Fraction Decomposer</h2>
+            <input id="partial-input" class="form-control mb-2" type="text" placeholder="Enter Rational Function">
+            <button class="btn btn-primary w-100" onclick="decomposeFraction()">Decompose</button>
+            <p id="partial-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inequality Calculator -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Inequality Calculator</h2>
+            <input id="inequality-input" class="form-control mb-2" type="text" placeholder="Enter Inequality">
+            <button class="btn btn-primary w-100" onclick="solveInequality()">Solve</button>
+            <p id="inequality-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flow Rate Calculator -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Flow Rate Calculator</h2>
+            <input id="pipe-diameter" class="form-control mb-2" type="number" placeholder="Pipe Diameter (m)">
+            <input id="velocity" class="form-control mb-2" type="number" placeholder="Velocity (m/s)">
+            <button class="btn btn-primary w-100" onclick="calculateFlowRate()">Calculate</button>
+            <p id="flowrate-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Impulse Calculator -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Impulse Calculator</h2>
+            <input id="force" class="form-control mb-2" type="number" placeholder="Force (N)">
+            <input id="time" class="form-control mb-2" type="number" placeholder="Time (s)">
+            <button class="btn btn-primary w-100" onclick="calculateImpulse()">Calculate</button>
+            <p id="impulse-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Factorization Calculator -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Factorization Calculator</h2>
+            <input id="factor-input" class="form-control mb-2" type="number" placeholder="Enter Integer">
+            <button class="btn btn-primary w-100" onclick="factorize()">Factorize</button>
+            <p id="factor-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Percentage Calculator -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Percentage Calculator</h2>
+            <input id="original-value" class="form-control mb-2" type="number" placeholder="Original Value">
+            <input id="percentage-change" class="form-control mb-2" type="number" placeholder="Percentage Change">
+            <button class="btn btn-primary w-100" onclick="calculatePercentage()">Calculate</button>
+            <p id="percentage-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exponential Formulas Calculator -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Exponential Formulas Calculator</h2>
+            <input id="base" class="form-control mb-2" type="number" placeholder="Base">
+            <input id="exponent" class="form-control mb-2" type="number" placeholder="Exponent">
+            <button class="btn btn-primary w-100" onclick="calculateExponential()">Calculate</button>
+            <p id="exponential-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cube of a Number Calculator -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Cube of a Number Calculator</h2>
+            <input id="cube-input" class="form-control mb-2" type="number" placeholder="Enter Integer">
+            <button class="btn btn-primary w-100" onclick="calculateCube()">Calculate</button>
+            <p id="cube-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cube Root Calculator -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Cube Root Calculator</h2>
+            <input id="cube-root-input" class="form-control mb-2" type="number" placeholder="Enter Integer">
+            <button class="btn btn-primary w-100" onclick="calculateCubeRoot()">Calculate</button>
+            <p id="cube-root-result" class="mt-3"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modals -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Login</h5>
+        </div>
+        <form action="/login" method="POST">
+          <div class="modal-body">
+            <input type="text" id="loginUsername" placeholder="Username" name="username" class="form-control mb-3">
+            <input type="password" id="loginPassword" placeholder="Password" name="password" class="form-control">
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Login">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="signupModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Signup</h5>
+        </div>
+        <form action="/register" method="POST">
+          <div class="modal-body">
+            <input type="text" name="username" id="signupUsername" placeholder="Username" class="form-control mb-3">
+            <input type="email" name="email" id="signupEmail" placeholder="Email" class="form-control mb-3">
+            <input type="number" name="mobile" id="signupmob" placeholder="Mobile" class="form-control mb-3">
+            <input type="password" name="password" id="signupPassword" placeholder="Password" class="form-control">
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button class="btn btn-primary" type="submit">Signup</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="contactModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Contact Us</h5>
+        </div>
+        <form action="/contact" method="POST">
+          <div class="modal-body">
+            <input type="text" id="contactName" placeholder="Name" class="form-control mb-3" name="name" required>
+            <input type="email" id="contactEmail" placeholder="Email" class="form-control mb-3" name="email" required>
+            <textarea id="contactMessage" placeholder="Message" class="form-control" name="message"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Submit">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal fade" id="calculatorModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Calculator</h5>
+        </div>
+        <div class="modal-body">
+          <div id="calculatorContent">
+            <!-- Calculator content dynamically loaded via JavaScript -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

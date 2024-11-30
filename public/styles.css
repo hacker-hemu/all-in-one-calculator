@@ -1,0 +1,8 @@
+.banner {
+  position: relative;
+}
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 5px;
+}
